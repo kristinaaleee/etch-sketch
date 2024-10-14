@@ -1,0 +1,24 @@
+*{
+    font-family:'Courier New', Courier, monospace;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    width: 450px;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.column{
+    border-color: black;
+    border-style: solid;
+    flex-grow: 1;
+    border-width: 1px
+}

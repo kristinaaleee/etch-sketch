@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Etch-a-Sketch</title>
+</head>
+    <body>
+        <h1>Etch-a-Sketch</h1>
+        <button id="size-button">Change Grid Size</button>
+        <div id = "container"></div>
+        
+    
+    <script>
+        const sizeButton = document.querySelector("#size-button");
+        const grid = document.querySelector("#container");
+
+        let size = 16;
+        createGrid(size);
+        
+        function createGrid (size) {
+            for(let row = 0; row < size; row++){
+                const row = document.createElement('div');
+                row.classList.add('row');
+                for(let column = 0; column < size; column++){
+                    const column = document.createElement('div');
+                    column.classList.add('column');
+                    row.appendChild(column);
+
+                    column.addEventListener('mouseover', () => {
+                        column.style.backgroundColor = '#ff0000';
+                    });
+                };
+                grid.appendChild(row);
+            };
+        };
+
+        function removeGrid() {
+            while (grid.firstChild) {
+                grid.firstChild.remove();
+            };
+        };
+
+        sizeButton.addEventListener('click', () => {
+            do {
+                size = prompt("How many squares for each side? Maximum: 100 squares");  
+            } while (size > 100 || isNaN(size));
+            
+            removeGrid();
+            createGrid(size);
+        }); 
+        
+    </script>
+    </body>
+</html>
