@@ -8,7 +8,9 @@
 </head>
     <body>
         <h1>Etch-a-Sketch</h1>
-        <button id="size-button">Change Grid Size</button>
+        <div id="button-wrapper">
+            <button id="size-button">Change Grid Size</button>   
+        </div>
         <div id = "container"></div>
         
     
@@ -29,7 +31,9 @@
                     row.appendChild(column);
 
                     column.addEventListener('mouseover', () => {
-                        column.style.backgroundColor = '#ff0000';
+                        colors = ['#FFADAD', '#FFD6A5', '#FDFFB6', '#CAFFBF', '#9BF6FF', '#A0C4FF', '#BDB2FF', '#FFC6FF' ]
+                        let randomColor = colors[Math.floor(Math.random() * colors.length)]
+                        column.style.backgroundColor = randomColor;
                     });
                 };
                 grid.appendChild(row);
@@ -45,7 +49,7 @@
         sizeButton.addEventListener('click', () => {
             do {
                 size = prompt("How many squares for each side? Maximum: 100 squares");  
-            } while (size > 100 || isNaN(size));
+            } while (size > 100 || isNaN(size) || size < 0);
             
             removeGrid();
             createGrid(size);
